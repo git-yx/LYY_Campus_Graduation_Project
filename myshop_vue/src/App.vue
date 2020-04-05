@@ -23,6 +23,8 @@ export default {
 }
 </script>
 
-<style scope>
-
+<style>
+input{
+    -webkit-user-select:text !important;
+}
 </style>
