@@ -80,6 +80,7 @@
             productList
         },
         mounted() { 
+            this.url = config.api;
             this.getSwiper() 
             let user = localStorage.getItem('userinfo')
             user? this.isLogin = true : this.isLogin = false;
@@ -94,7 +95,6 @@
                 .then(res => {
                     this.swipers = res.data.data;
                     this.ok = true; // 作用: 保证先加载$axios 数据 然后加 swiper DOM标记
-                    this.url = config.api;
                 })
                 .catch(e => console.log);
             },

@@ -69,7 +69,7 @@
                 </div>
                 <!--  item 循环每个订单中的每个商品-->
                 <div class="item splitter" v-for="(item,key) in order.itemList" :key="key">
-                    <img class="items-cover" :src="`http://localhost:3000/${item.product_img}`" style="height:75px;"/>
+                    <img class="items-cover" :src="`${url}/${item.product_img}`" style="height:75px;"/>
                     <div class="item-title">{{item.product_title}}</div>
                     <div class="price-info" style="margin-left:10px">
                         <div class="item-price">￥{{item.product_price}}</div>
@@ -110,6 +110,7 @@
         components: { navBar },
         data() {
             return {
+                url: "",
                 userId: "",
                 userLogin: false,
                 orderIndex: 0,
@@ -124,6 +125,7 @@
             };
         },
         mounted() {
+            this.url = config.api;
             this.load(); // 登录状态
             this.getAllOrder(); // 查询所有已经生成订单的商品商品
         },
