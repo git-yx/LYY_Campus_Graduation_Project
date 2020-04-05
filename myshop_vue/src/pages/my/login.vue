@@ -9,10 +9,10 @@
         </nav-bar>
         <main class="user_login_box">
             <div class="login_dialog" id="login">
-                <div class="_username">
+                <div class="_username" style="-webkit-user-select:text !important;">
                     <input type="text" placeholder="请输入用户名" class="user_input" v-model="phone"/>
                 </div>
-                <div class="_username">
+                <div class="_username" style="-webkit-user-select:text !important;">
                     <input type="_username password" placeholder="请输入密码" class="user_input" v-model="pass"/>
                 </div>
 
