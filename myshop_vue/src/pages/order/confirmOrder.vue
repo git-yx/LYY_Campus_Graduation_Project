@@ -17,7 +17,7 @@
 
             <div class="orders splitter">
                 <div class="item" v-for="(item,key) in orderGoodList" :key="key">
-                    <img class="item-cover" v-lazy="`${url}/${item.goods_img.split(',')[0]}`" width="120"
+                    <img class="item-cover" v-lazy="`${url}/${item.goods_img.split(',')[0]}`" width="120" height="120"
                         alt />
                     <div class="item-title">{{item.name}}</div>
                     <div class="price-info">
