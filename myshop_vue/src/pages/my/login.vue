@@ -10,10 +10,10 @@
         <main class="user_login_box">
             <div class="login_dialog" id="login">
                 <div class="_username">
-                    <input type="text" placeholder="请输入用户名" class="user_input" v-model="phone" id="phone" />
+                    <input type="text" placeholder="请输入用户名" class="user_input" v-model="phone"/>
                 </div>
-                <div class="_username u_passwd">
-                    <input type="password" placeholder="请输入密码" class="user_input" v-model="pass" id="code" />
+                <div class="u_passwd">
+                    <input type="password" placeholder="请输入密码" class="user_input" v-model="pass"/>
                 </div>
 
                 <div class="login_box">

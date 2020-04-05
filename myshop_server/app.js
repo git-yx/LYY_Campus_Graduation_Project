@@ -19,7 +19,7 @@ app.use(cors({
         // 允许来自所有域名请求
         if (ctx.url === '/test') { return "*"; }
         // return 'http://localhost:8080'  //'http://www.yiqigoumall.com';  //只允许域名访问
-        return "*";
+        return "https://lyy.aesen.cc:8443";
     },
     exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
     maxAge: 5,

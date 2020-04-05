@@ -23,11 +23,6 @@ export default {
 }
 </script>
 
-<style>
+<style scope>
 
-    .over{
-        overflow:hidden;
-        text-overflow:ellipsis;
-        white-space:nowrap
-    }
 </style>
