@@ -61,6 +61,7 @@ export default {
   border: 0;
   font-size: 14px;
   margin-right: 10px;
+  line-height:normal;
 }
 .search .jd-logo {
   display: inline-block;

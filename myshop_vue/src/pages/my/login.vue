@@ -12,7 +12,7 @@
                 <div class="_username">
                     <input type="text" placeholder="请输入用户名" class="user_input" v-model="phone"/>
                 </div>
-                <div class="u_passwd">
+                <div class="_username">
                     <input type="_username password" placeholder="请输入密码" class="user_input" v-model="pass"/>
                 </div>
 
@@ -112,6 +112,7 @@
         height: 100%;
         font-size: 16px;
         padding-left: 6px;
+        line-height:normal;
     }
 
     .login_dialog .u_passwd {
