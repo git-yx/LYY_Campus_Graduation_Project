@@ -13,7 +13,7 @@
                     <input type="text" placeholder="请输入用户名" class="user_input" v-model="phone"/>
                 </div>
                 <div class="u_passwd">
-                    <input type="password" placeholder="请输入密码" class="user_input" v-model="pass"/>
+                    <input type="_username password" placeholder="请输入密码" class="user_input" v-model="pass"/>
                 </div>
 
                 <div class="login_box">
