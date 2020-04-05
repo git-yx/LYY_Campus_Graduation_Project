@@ -59,7 +59,7 @@
             </div>
             <div class="product-one">
                 <div class="one-image">
-                    <img :src="`http://localhost:3000/${swipers[0]}`" alt>
+                    <img :src="`${url}/${swipers[0]}`" alt>
                 </div>
                 <div class="one-info">
                     <div class="price">{{productOne.priceDiscount}}</div>

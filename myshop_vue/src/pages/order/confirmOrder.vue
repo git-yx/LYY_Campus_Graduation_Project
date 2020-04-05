@@ -17,7 +17,7 @@
 
             <div class="orders splitter">
                 <div class="item" v-for="(item,key) in orderGoodList" :key="key">
-                    <img class="item-cover" v-lazy="`http://localhost:3000/${item.goods_img.split(',')[0]}`" width="120"
+                    <img class="item-cover" v-lazy="`${url}/${item.goods_img.split(',')[0]}`" width="120"
                         alt />
                     <div class="item-title">{{item.name}}</div>
                     <div class="price-info">
@@ -68,6 +68,7 @@
         name: "confirmOrder",
         data() {
             return {
+                url:"",
                 orderGoodList: [],
                 totalPrice: 0,
                 addressInfo: "",
@@ -79,6 +80,7 @@
             navBar
         },
         mounted() {
+            this.url = config.api
             this.getAddress();
             // 从本地存在获得 orderGoodList
             this.orderGoodList = JSON.parse(
