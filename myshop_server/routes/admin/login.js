@@ -15,6 +15,10 @@ router.post('/dologin', async (ctx) => {
     // 2.获得表单中 验证码,用户和密码 实现数据库验证登录
     const { verify, username, password } = ctx.request.body;
     // 将验证码都toLocaleLowerCase() 转为小写
+    if(!ctx.session.code){
+        await ctx.render('admin/error.html', { message: '状态丢失，请刷新页面', redirectUrl: '/admin/login' });
+        return;
+    }
     if (ctx.session.code.toLocaleLowerCase() === verify.toLocaleLowerCase()) {
         // 用户和密码 实现数据库验证登录
         let result = await managerModel.find({ username, password });
