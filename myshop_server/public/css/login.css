@@ -9,7 +9,7 @@
 */
 @CHARSET "UTF-8";
 body {
-	background:#01458E;
+	background-color: coral;
 }
 #login {
 	width:740px;
@@ -74,7 +74,7 @@ body {
 	font-size:24px;
 	padding-left:5px;
 	padding-top:10px;
-	color:#01458e;
+	color:red;
 	font-weight:bold;
 	
 }
