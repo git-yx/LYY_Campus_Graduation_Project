@@ -723,5 +723,105 @@ router.get('/item/userIsLikeItem', async function (ctx) {
         };
     }
 })
+// 查询所有收藏
+router.get('/like/queryAlllikes', async function (ctx) {
+    let userId = mongoose.Types.ObjectId(ctx.request.query.userId);
+    console.log('查询所有收藏',userId);
+    let results = await userLike.aggregate([
+        {
+            $lookup: {  // 两表联合 jion
+                from: 'goods',
+                localField: 'itemId',
+                foreignField: '_id',
+                as: 'likeList',
+            },
+        }
+    ]);
+    console.log('查询所有收藏结果',results);
+    if (results.length > 0) {
+        ctx.body = {
+            "success": true,
+            "message": "OK",
+            "data": results
+        };
+    } else {
+        ctx.body = {
+            "success": false,
+            "message": "没有查询到订单内容",
+            "data": []
+        };
+    }
+})
+
+
+//图片上传模块
+const multer = require('koa-multer');
+let storage = multer.diskStorage({
+    destination: 'public/upload/' + new Date().getFullYear() + (new Date().getMonth() + 1) + new Date().getDate(),
+    filename: function (req, file, cb) {   /*图片上传完成重命名*/
+        let fileFormat = (file.originalname).split(".");   /*获取后缀名  分割数组*/
+        cb(null, Date.now() + "." + fileFormat[fileFormat.length - 1]);
+    }
+})
+let upload = multer({ storage });
+
+let CMT = require('../model/cmtModel');
+
+
+// 查询所有收藏
+router.get('/cmt/get', async function (ctx) {
+    let brandId = mongoose.Types.ObjectId(ctx.request.query.brandId);
+    console.log('查询所有评测',brandId);
+    let results = await CMT.find({ brandId })
+    console.log('查询所有收藏结果',results);
+    if (results.length > 0) {
+        ctx.body = {
+            "success": true,
+            "message": "OK",
+            "data": results
+        };
+    } else {
+        ctx.body = {
+            "success": false,
+            "message": "没有查询到订单内容",
+            "data": []
+        };
+    }
+})
+
+
+// 执行增加
+router.post('/cmt/doadd', upload.fields([ { name: 'goods_img', maxCount: 5 } ]),async (ctx)=> {
+    if (ctx.req.files['goods_img'] == undefined || ctx.req.files['goods_img'] == null) { 
+        ctx.body = {
+            "success": false,
+            "message": "没有图片",
+            "data": []
+        };
+    } else {
+        const { phone,brandId,title,cmt } = ctx.req.body;
+
+        // 图像路径拼接  upload/2224ev.jpg,upload/dfdfdf.jpg,
+        let goods_image_list = ctx.req.files['goods_img'];
+        let imgList = [];
+        for (k in goods_image_list) { imgList.push(goods_image_list[k].path.substr(7).replace(/\\/g, '/')) }
+
+        let addcmt = new CMT({
+            phone,
+            brandId,
+            title,
+            imgList,
+            cmt
+        })
+        let addResult = await addcmt.save();
+
+        ctx.body = {
+            "success": true,
+            "message": "上传成功",
+            "data": addResult
+        };
+    }
+})
+
 
 module.exports = router;

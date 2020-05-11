@@ -19,7 +19,7 @@
     <!--有商品的页面-->
     <div v-if="hasProduct" class="has-cart">
       <!--<i class="iconfont" :class="mycheck?'icon-yigouxuan':'icon-weigouxuan'"></i>-->
-      <h3>买买网专营店</h3>
+      <h3>口红专卖店</h3>
       <ul class="my-addList">
         <li class="my-item" v-for="(shop,key) in shopCart" :key="key">
           <div class="mycheckbox" @click="touchOne(shop)">

@@ -1,7 +1,7 @@
 <template>
     <div>
         <ul class="tabtitle">
-            <li v-for="(item,key) in titles" :key="key" :class="{active:curId==item._id}" @click="switchTab(item._id)">
+            <li v-for="(item,key) in titles" :key="key" :class="{active:curId==item._id}" @click="switchTab(item._id, item)">
                 {{item.title}}
             </li>
         </ul>
@@ -33,14 +33,14 @@
                         let tabId ;
                         localStorage.getItem('curTitle') ? tabId = localStorage.getItem('curTitle') : tabId = this.titles[0]._id;
                         console.log('导航到分类',tabId);
-                        this.switchTab(tabId);
+                        this.switchTab(tabId, this.titles[0]);
                     })
                     .catch(e => {
                         console.log(e);
                     });
             },
             // 切换标题
-            switchTab(id) {
+            switchTab(id, item) {
                 // 优化重复点击同一个标题
                 if (id == this.curId) { return false }
                 // 更改动态 curId
@@ -52,7 +52,7 @@
                 }
                 // 广播把 curId 传递给父元素
                 //this.$emit('end',this.curId,this.titles[id].title);
-                this.$emit("end", this.curId, getTitleById(this.titles, this.curId));
+                this.$emit("end", this.curId, getTitleById(this.titles, this.curId), item);
             }
         }
     };

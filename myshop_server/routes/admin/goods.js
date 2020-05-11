@@ -93,7 +93,7 @@ router.post('/doadd', upload.fields([
         let goods_size = JSON.stringify(ctx.req.body.goods_size);
         let goods_color = JSON.stringify(ctx.req.body.goods_color);
         let goods_keywords = ctx.req.body.goods_keywords;
-        let goods_content = ctx.req.body.goods_content.replace(/http:\/\/localhost:3000/g,"https://lyy.aesen.cc:8443/api")
+        let goods_content = ctx.req.body.goods_content // .replace(/http:\/\/localhost:3000/g,"https://lyy.aesen.cc:8443/api")
         let sort = ctx.req.body.sort;
         let is_new = ctx.req.body.is_new || 0;
         let is_hot = ctx.req.body.is_hot || 0;

@@ -11,20 +11,9 @@ router.get('/', async function (ctx) {
 })
 
 /// 更新订单状态
-router.get('/admin/orderchangeToFinished', async (ctx, next) => {
+router.get('/orderchangeToFinished', async (ctx, next) => {
     let orderId = ctx.request.query.orderId;
-    let data = await order.find({ "_id": orderId });
-    let json;
-    if (data[0].order_status == 20) {
-        json = { /*es6 属性名表达式*/
-            [attr]: 40
-        };
-    } else {
-        json = {
-            [attr]: 20
-        };
-    }
-    let updateResult = await order.updateOne({ "_id": orderId }, json);
+    let updateResult = await order.updateOne({ "_id": orderId }, { order_status: 40 });
     if (updateResult) {
         ctx.body = {
             success: true,

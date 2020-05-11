@@ -4,6 +4,8 @@ import Router from 'vue-router'
 //import HelloWorld from '@/components/HelloWorld'
 import home from '@/pages/home'
 import category from '@/pages/category'
+import cmtUpload from '@/pages/category/cmtUpload'
+import save from '@/pages/save'
 import cart from '@/pages/cart'
 import my from '@/pages/my'
 import productDetail from '@/pages/productDetail'
@@ -32,9 +34,19 @@ export default new Router({
             component: category
         },
         {
+            path: '/cmtUpload',
+            name: 'cmtUpload',
+            component: cmtUpload
+        },
+        {
             path: '/cart',
             name: 'cart',
             component: cart
+        },
+        {
+            path: '/save',
+            name: 'save',
+            component: save
         },
         {
             path: '/my',

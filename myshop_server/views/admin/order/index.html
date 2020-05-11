@@ -97,14 +97,10 @@
 	</div>
 	<script type="text/javascript" src="/js/base.js"></script>
 	<script>
-		function changeOrderStatus(id) {
-			$.get('admin/orderchangeToFinished', { orderId: id }, function (data) {
+		function changeOrderStatus(el,id) {
+			$.get('order/orderchangeToFinished', { orderId: id }, function (data) {
 				if (data.success) {
-					if (el.indexOf('待支付') != -1) {
-						el.innerHTML = '已完成';
-					} else {
-						el.innerHTML = '待支付';
-					}
+					location.reload();
 				}
 			})
 		}

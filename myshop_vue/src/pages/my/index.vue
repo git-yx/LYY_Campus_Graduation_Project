@@ -22,6 +22,12 @@
                 <i class="iconfont icon-icon-test3" style="margin-left:50px" @click="logout"></i>
             </div>
 
+            <!-- 收藏夹 -->
+            <div class="save" @click="tosave">
+                收藏夹
+                <div class="tosave">查看详情></div>
+            </div>
+
             <!-- 历史订单 -->
             <div class="order-tab">
                 <div class="every-status" @click="queryOrder(0,0)" :class="orderIndex==0?'active':''">
@@ -207,6 +213,9 @@
             },
             // 返回历史对象window.history.go(-1)的上一页
             goback() { this.$router.go(-1) },
+            tosave(){
+                this.$router.push({name: 'save'});
+            },
             // 判断登录状态
             load() {
                 if(localStorage.getItem("userinfo")){
@@ -316,6 +325,22 @@
     }
 
     /* end */
+
+    /* save */
+    .save{
+        height: 50px;
+        margin-top: 15px;
+        width: 100vw;
+        background-color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 16px;
+        padding: 0 10px;
+    }
+    .tosave{
+        color: #3a3932;
+    }
 
     /* 历史订单切换tab */
     .order-tab {
